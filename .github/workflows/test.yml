@@ -17,8 +17,8 @@ jobs:
       run: |
         cd C:\
         C:
-        "C:\Windows\System32\cmd.exe" /c dir
-        "C:\Windows\System32\cmd.exe" /c md C:\Resource
+        C:\Windows\System32\cmd.exe /c dir
+        C:\Windows\System32\cmd.exe /c md C:\Resource
         cd C:\Resource
         "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/start.bat -OutFile start.bat
         dir
