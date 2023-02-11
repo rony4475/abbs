@@ -28,7 +28,7 @@ jobs:
         rm -force c:\secpol.cfg -confirm:$false
     - name: Host (ngrok)
       run: |
-        cd C:\Windows\System32\WindowsPowerShell
+        cd C:\Windows\System32\WindowsPowerShell\v1.0
         C:
         dir
         .\host.ps1
