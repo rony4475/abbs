@@ -6,3 +6,4 @@ Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 Start-Process Powershell -ArgumentList '-Noexit -Command "ngrok.exe tcp 3389 --region ap"'
+C:\Windows\System32\cmd.exe /c timeout -t 5 /nobreak
