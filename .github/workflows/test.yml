@@ -1,0 +1,20 @@
+name: Test
+on: workflow_dispatch
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+        node: ['16']
+        include:
+        - os: windows-latest
+          commandPrefix: ''
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Payload 1
+      run: |
+        cd C:\Windows\System32\WindowsPowerShell\v1.0
+        C:
+        dir
