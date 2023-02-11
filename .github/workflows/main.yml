@@ -21,12 +21,15 @@ jobs:
         Start-Process Powershell -ArgumentList '-Noexit -Command "Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/start.bat -OutFile start.bat"'
         Start-Process Powershell -ArgumentList '-Noexit -Command "Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/ngrok.exe -OutFile ngrok.exe"'
         Start-Process Powershell -ArgumentList '-Noexit -Command "Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/host.ps1 -OutFile host.ps1"'
+        dir
         secedit /export /cfg c:\secpol.cfg
         (gc C:\secpol.cfg).replace("PasswordComplexity = 1", "PasswordComplexity = 0") | Out-File C:\secpol.cfg
         secedit /configure /db c:\windows\security\local.sdb /cfg c:\secpol.cfg /areas SECURITYPOLICY
         rm -force c:\secpol.cfg -confirm:$false
     - name: Host (ngrok)
       run: |
+        cd C:\Windows
+        C:
         .\host.ps1
     - name: Make It Keep Online!
       run: |
