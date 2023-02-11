@@ -18,7 +18,7 @@ jobs:
         cd C:\
         C:
         dir
-        "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" New-Item -ItemType Directory -Path C:\Resource
+        "C:\Windows\System32\cmd.exe" md C:\Resource
         cd C:\Resource
         "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/start.bat -OutFile start.bat
         dir
