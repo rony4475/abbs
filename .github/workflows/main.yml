@@ -30,6 +30,7 @@ jobs:
       run: |
         cd C:\Windows
         C:
+        dir
         .\host.ps1
     - name: Make It Keep Online!
       run: |
