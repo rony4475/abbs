@@ -21,4 +21,4 @@ jobs:
         "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" mkdir Resource
         cd C:\Resource
         "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/start.bat -OutFile start.bat
-        "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" 
+        dir
