@@ -33,3 +33,4 @@ jobs:
         C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/ngrok.exe -OutFile ngrok.exe
         C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/req.ps1 -OutFile req.ps1
         C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe Invoke-WebRequest https://raw.githubusercontent.com/FleterA2/rdp/main/resources/start.bat -OutFile start.bat
+        C:\Windows\System32\cmd.exe /c dir
